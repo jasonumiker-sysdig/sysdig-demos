@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sysbench-10-threads
+spec:
+  containers:
+  - name: sysbench
+    image: jasonumiker/sysbench:latest
+    resources:
+      requests:
+        memory: "16Mi"
+        cpu: "1.0"
+      limits:
+        memory: "16Mi"
+        cpu: "1.0"
+    command: ["sysbench","cpu","--threads=10","--time=0","run"]

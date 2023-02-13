@@ -74,10 +74,10 @@ cp /root/.kube/config /home/ubuntu/.kube/config
 chown ubuntu:ubuntu -R /home/ubuntu/.kube
 
 # Install our demos
-kubectl apply -f /home/ubuntu/sysdig-security-demos
-kubectl apply -f /home/ubuntu/sysdig-security-demos/demos/security-playground/security-playground.yaml
-kubectl apply -f /home/ubuntu/sysdig-security-demos/demos/network-policy/hello-app -n team1
-kubectl apply -f /home/ubuntu/sysdig-security-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
+kubectl apply -f /home/ubuntu/sysdig-demos
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/security-playground/security-playground.yaml
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n team1
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
 
 # Note replace this with your own clone of the repo - it is for the Compliance PR demo
 cd ~

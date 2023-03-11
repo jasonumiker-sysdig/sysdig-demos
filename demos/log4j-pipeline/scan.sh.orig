@@ -1,0 +1,1 @@
+SECURE_API_TOKEN=xxx ./sysdig-cli-scanner --apiurl https://app.au1.sysdig.com logstash:7.16.1 --policy sysdig-best-practices

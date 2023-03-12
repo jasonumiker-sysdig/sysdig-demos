@@ -1,0 +1,5 @@
+sysdig-cli-scanner
+scan.sh
+main.db
+scan-logs
+main.db.meta.json

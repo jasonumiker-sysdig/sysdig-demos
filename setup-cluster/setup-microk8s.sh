@@ -32,9 +32,10 @@ snap install kubectl --channel 1.24/stable --classic
 snap install helm --classic
 
 # Install crictl in microk8s-vm
-wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.24.1/crictl-v1.24.1-linux-amd64.tar.gz
-tar zxvf crictl-v1.24.1-linux-amd64.tar.gz -C /usr/local/bin
-rm -f crictl-v1.24.1-linux-amd64.tar.gz
+ARCH=$(dpkg --print-architecture)
+wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.25.0/crictl-v1.25.0-linux-$ARCH.tar.gz
+tar zxvf crictl-v1.25.0-linux-$ARCH.tar.gz -C /usr/local/bin
+rm -f crictl-v1.25.0-linux-$ARCH.tar.gz
 echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
 
 # Set up the kubeconfig

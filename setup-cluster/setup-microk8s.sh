@@ -84,5 +84,5 @@ kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-
 cd ~
 git clone https://github.com/jasonumiker-sysdig/example-voting-app.git
 cd example-voting-app/k8s-specifications/
-kubectl apply -f vote-namespace.yml
-kubectl apply -f .
+kubectl create namespace vote
+kubectl apply -f . -n vote

@@ -43,6 +43,7 @@ mkdir /root/.kube
 microk8s.config | cat - > /root/.kube/config
 
 # Install the Sysdig Agent
+chmod +x /home/ubuntu/bootstrap-microk8s-vm.sh
 /home/ubuntu/sysdig-agent-helm-install.sh
 
 # Set up multi-tenancy

@@ -76,7 +76,8 @@ cp /root/.kube/config /home/ubuntu/.kube/config
 chown ubuntu:ubuntu -R /home/ubuntu/.kube
 
 # Install our demos
-kubectl apply -f /home/ubuntu/sysdig-demos
+kubectl apply -f /home/ubuntu/sysdig-demos/team1.yaml
+kubectl apply -f /home/ubuntu/sysdig-demos/team2.yaml
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/security-playground/security-playground.yaml
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n team1
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2

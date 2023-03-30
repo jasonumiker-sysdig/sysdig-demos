@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VM_NAME="microk8s-vm-sysdig-mac"
+VM_NAME="microk8s-vm-sysdig"
 
 # You can reset things back to defaults by deleting the VM and then let the script recreate
 multipass delete $VM_NAME

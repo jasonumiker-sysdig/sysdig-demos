@@ -2,7 +2,7 @@
 # NOTE: Run this with sudo
 
 # Install microk8s on it
-snap install microk8s --channel=1.24-eksd/stable --classic
+snap install microk8s --channel=1.25/stable --classic
 
 # Move containerd to standard /run and /var/lib runtime paths
 # Periodically I try to reconfigure the Sysdig Agent for the non-standand
@@ -21,17 +21,17 @@ sed -i 's|--containerd=${SNAP_COMMON}/run/containerd.sock|--containerd=/var/run/
 microk8s start
 microk8s status --wait-ready
 
-# Enable CoreDNS, RBAC, hostpath-storage, ingress, and metrics-server
-microk8s enable dns rbac hostpath-storage ingress metrics-server
+# Enable CoreDNS, RBAC, hostpath-storage
+microk8s enable dns rbac hostpath-storage
 microk8s status --wait-ready
 
-# Install kubectl in microk8s-vm
-snap install kubectl --channel 1.24/stable --classic
+# Install kubectl in VM
+snap install kubectl --channel 1.25/stable --classic
 
-# Install helm in microk8s-vm
+# Install helm in VM
 snap install helm --classic
 
-# Install crictl in microk8s-vm
+# Install crictl in VM
 ARCH=$(dpkg --print-architecture)
 wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.25.0/crictl-v1.25.0-linux-$ARCH.tar.gz
 tar zxvf crictl-v1.25.0-linux-$ARCH.tar.gz -C /usr/local/bin
@@ -79,6 +79,7 @@ kubectl apply -f /home/ubuntu/sysdig-demos
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/security-playground/security-playground.yaml
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n team1
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/data-exfil-postgres/postgres-sakila.yaml 
 
 # Note replace this with your own clone of the repo - it is for the Compliance PR demo
 cd ~

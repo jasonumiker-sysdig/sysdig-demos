@@ -42,10 +42,6 @@ echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crict
 mkdir /root/.kube
 microk8s.config | cat - > /root/.kube/config
 
-# Install the Sysdig Agent
-chmod +x /home/ubuntu/bootstrap-microk8s-vm.sh
-/home/ubuntu/sysdig-agent-helm-install.sh
-
 # Set up multi-tenancy
 # Create token for Jane to access team1
 JANE_TOKEN=$(openssl rand -base64 32 | base64)
@@ -83,7 +79,7 @@ kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n tea
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
 kubectl apply -f /home/ubuntu/sysdig-demos/demos/data-exfil-postgres/postgres-sakila.yaml 
 
-# Note replace this with your own clone of the repo - it is for the Compliance PR demo
+# NOTE: replace this with your own clone of the repo - it is for the Compliance PR demo
 cd ~
 git clone https://github.com/jasonumiker-sysdig/example-voting-app.git
 cd example-voting-app/k8s-specifications/

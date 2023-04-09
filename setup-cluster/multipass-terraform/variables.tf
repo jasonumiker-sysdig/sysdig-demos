@@ -33,3 +33,9 @@ variable "image" {
   type        = string
   default     = "22.04"
 }
+
+variable "syddig-helm-values" {
+  description = "The values file to use for Sysdig Agent"
+  type        = string
+  default     = "../sysdig-agent-values.yaml"
+}

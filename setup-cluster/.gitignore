@@ -1,1 +1,2 @@
-sysdig-agent-helm-values.yaml
+sysdig-agent-values.yaml
+kubeconfig

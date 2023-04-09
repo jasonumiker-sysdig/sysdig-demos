@@ -72,19 +72,12 @@ cp /root/.kube/config /home/ubuntu/.kube/config
 chown ubuntu:ubuntu -R /home/ubuntu/.kube
 
 # Install our demos
-#kubectl apply -f /home/ubuntu/sysdig-demos/team1.yaml
-#kubectl apply -f /home/ubuntu/sysdig-demos/team2.yaml
-#kubectl apply -f /home/ubuntu/sysdig-demos/demos/security-playground/security-playground.yaml
-#kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n team1
-#kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
-#kubectl apply -f /home/ubuntu/sysdig-demos/demos/data-exfil-postgres/postgres-sakila.yaml 
-
-# NOTE: replace this with your own clone of the repo - it is for the Compliance PR demo
-#cd ~
-#git clone https://github.com/jasonumiker-sysdig/example-voting-app.git
-#cd example-voting-app/k8s-specifications/
-#kubectl create namespace vote
-#kubectl apply -f . -n vote
+kubectl apply -f /home/ubuntu/sysdig-demos/team1.yaml
+kubectl apply -f /home/ubuntu/sysdig-demos/team2.yaml
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/security-playground/security-playground.yaml
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app -n team1
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/network-policy/hello-app/hello-client.yaml -n team2
+kubectl apply -f /home/ubuntu/sysdig-demos/demos/data-exfil-postgres/postgres-sakila.yaml 
 
 # Wait for hostpath-provisioner to be up before we call it done
 kubectl rollout status deployment hostpath-provisioner -n kube-system --timeout 300s

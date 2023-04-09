@@ -1,0 +1,23 @@
+global:
+  sysdig: 
+    accessKey: XXX
+    region: au1
+    secureAPIToken: YYY
+  kspm:
+    deploy: true
+  clusterConfig:
+    name: ZZZ
+nodeAnalyzer:
+  secure:
+    vulnerabilityManagement:
+      newEngineOnly: true
+  nodeAnalyzer:
+    benchmarkRunner:
+      deploy: false
+    runtimeScanner:
+      settings:
+        eveEnabled: true
+admissionController:
+  enabled: true
+  scanner:
+    enabled: false

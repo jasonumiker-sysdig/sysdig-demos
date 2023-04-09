@@ -1,0 +1,23 @@
+global:
+  sysdig: 
+    accessKey: f9f4ff61-b890-49f6-a7b1-f8154d0a8f91
+    region: au1
+    secureAPIToken: 20569146-6b8d-4623-a93d-2d59cf72c385
+  kspm:
+    deploy: true
+  clusterConfig:
+    name: microk8s-cluster
+nodeAnalyzer:
+  secure:
+    vulnerabilityManagement:
+      newEngineOnly: true
+  nodeAnalyzer:
+    benchmarkRunner:
+      deploy: false
+    runtimeScanner:
+      settings:
+        eveEnabled: true
+admissionController:
+  enabled: true
+  scanner:
+    enabled: false

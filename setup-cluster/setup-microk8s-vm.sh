@@ -7,7 +7,7 @@ multipass delete $VM_NAME
 multipass purge
 
 # Provision your local cluster VM
-multipass launch --cpus 4 --memory 8G --disk 20G --name $VM_NAME -- cloud-init cloud-init.yaml --timeout 600 22.04
+multipass launch --cpus 4 --memory 8G --disk 20G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
 
 # Deploy the Sysdig Agent
 multipass transfer ./sysdig-agent-helm-install.sh $VM_NAME:/home/ubuntu/

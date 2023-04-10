@@ -20,13 +20,15 @@ resource "null_resource" "multipass" {
   }
 }
 
-resource "helm_release" "sysdig_agent_chart" {
-  name             = "sysdig-agent"
-  repository       = "https://charts.sysdig.com"
-  chart            = "sysdig-deploy"
-  version          = "1.6.12"
-  namespace        = "sysdig-agent"
+resource "helm_release" "argocd" {
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  version          = "5.28.1"
+  namespace        = "argocd"
   create_namespace = "true"
-  values           = ["${file("${var.syddig-helm-values}")}"]
+  values = [
+    "${file("${var.argocd-helm-values}")}"
+  ]
   depends_on       = [null_resource.multipass]
 }

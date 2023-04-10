@@ -34,8 +34,8 @@ variable "image" {
   default     = "22.04"
 }
 
-variable "syddig-helm-values" {
+variable "argocd-helm-values" {
   description = "The values file to use for Sysdig Agent"
   type        = string
-  default     = "../sysdig-agent-values.yaml"
+  default     = "argovalues.yaml"
 }

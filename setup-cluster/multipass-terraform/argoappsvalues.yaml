@@ -1,0 +1,27 @@
+projects:
+  - name: sysdig-demos
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+    destinations:
+      - name: '*'
+        namespace: '*'
+        server: '*'
+    namespaceResourceWhitelist:
+      - group: '*'
+        kind: '*'
+    sourceRepos:
+      - '*'
+applications:
+  - name: demos
+    destination:
+      server: 'https://kubernetes.default.svc'
+    source:
+      path: demos
+      repoURL: 'https://github.com/jasonumiker-sysdig/sysdig-demos'
+      targetRevision: main
+    project: sysdig-demos
+    syncPolicy:
+      automated:
+        prune: false
+        selfHeal: false

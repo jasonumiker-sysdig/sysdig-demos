@@ -1,8 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - team1.yaml
-  - team2.yaml
-  - security-playground
-  - data-exfil-postgres
-  - network-policy
+- team1.yaml
+- team2.yaml
+- security-playground
+- data-exfil-postgres
+- network-policy
+patches:
+- path: ./patches/1683105621_remediate_HostPID_for_workload_security-playground.yaml
+  target:
+    kind: Deployment
+    name: security-playground
+    namespace: security-playground

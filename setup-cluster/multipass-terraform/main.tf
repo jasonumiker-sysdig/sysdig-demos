@@ -24,7 +24,6 @@ resource "helm_release" "sysdig_agent_chart" {
   name             = "sysdig-agent"
   repository       = "https://charts.sysdig.com"
   chart            = "sysdig-deploy"
-  version          = "1.7.2"
   namespace        = "sysdig-agent"
   create_namespace = "true"
   values           = ["${file("${var.sysdig-helm-values}")}"]
@@ -35,7 +34,6 @@ resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  version          = "5.29.1"
   namespace        = "argocd"
   create_namespace = "true"
   values = [
@@ -48,7 +46,6 @@ resource "helm_release" "argocd-apps" {
   name             = "argocd-apps"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argocd-apps"
-  version          = "0.0.9"
   namespace        = "argocd"
   values = [
     "${file("${var.argocd-apps-helm-values}")}"

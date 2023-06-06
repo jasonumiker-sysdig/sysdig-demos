@@ -1,0 +1,4 @@
+[client]
+user = root
+password = sakila
+host=10.1.11.146

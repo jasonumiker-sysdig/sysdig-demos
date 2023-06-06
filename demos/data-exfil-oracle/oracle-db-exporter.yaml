@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracledb-exporter
+  namespace: oracle-sakila
+spec:
+  selector:
+    matchLabels:
+      app: oracledb-exporter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: oracledb-exporter
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9161"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: oracledb-exporter
+        ports:
+        - containerPort: 9161
+        image: ghcr.io/iamseth/oracledb_exporter:0.4.2
+        env:
+        - name: DATA_SOURCE_NAME
+          value: oracle://system:sakila@10.1.11.148:1521/XEPDB1
+        - name: CUSTOM_METRICS
+          value: /tmp/custom-metrics.toml
+        volumeMounts:
+          - name:  custom-metrics
+            mountPath:  /tmp/custom-metrics.toml
+            subPath: custom-metrics.toml
+      volumes:
+        - name: custom-metrics
+          configMap:
+            defaultMode: 420
+            name: custom-metrics
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-metrics
+  namespace: oracle-sakila
+data:
+  custom-metrics.toml: |
+    [[metric]]
+    context = "slow_queries"
+    metricsdesc = { p95_time_usecs= "Gauge metric with percentile 95 of elapsed time.", p99_time_usecs= "Gauge metric with percentile 99 of elapsed time." }
+    request = "select  percentile_disc(0.95)  within group (order by elapsed_time) as p95_time_usecs, percentile_disc(0.99)  within group (order by elapsed_time) as p99_time_usecs from v$sql where last_active_time >= sysdate - 5/(24*60)"
+
+    [[metric]]
+    context = "big_queries"
+    metricsdesc = { p95_rows= "Gauge metric with percentile 95 of returned rows.", p99_rows= "Gauge metric with percentile 99 of returned rows." }
+    request = "select  percentile_disc(0.95)  within group (order by rownum) as p95_rows, percentile_disc(0.99)  within group (order by rownum) as p99_rows from v$sql where last_active_time >= sysdate - 5/(24*60)"
+
+    [[metric]]
+    context = "size_user_segments_top100"
+    metricsdesc = {table_bytes="Gauge metric with the size of the tables in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as table_bytes from user_segments where segment_type='TABLE' group by segment_name) order by table_bytes DESC FETCH NEXT 100 ROWS ONLY"
+
+    [[metric]]
+    context = "size_user_segments_top100"
+    metricsdesc = {table_partition_bytes="Gauge metric with the size of the table partition in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as table_partition_bytes from user_segments where segment_type='TABLE PARTITION' group by segment_name) order by table_partition_bytes DESC FETCH NEXT 100 ROWS ONLY"
+
+    [[metric]]
+    context = "size_user_segments_top100"
+    metricsdesc = {cluster_bytes="Gauge metric with the size of the cluster in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as cluster_bytes from user_segments where segment_type='CLUSTER' group by segment_name) order by cluster_bytes DESC FETCH NEXT 100 ROWS ONLY"
+
+    [[metric]]
+    context = "size_dba_segments_top100"
+    metricsdesc = {table_bytes="Gauge metric with the size of the tables in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as table_bytes from dba_segments where segment_type='TABLE' group by segment_name) order by table_bytes DESC FETCH NEXT 100 ROWS ONLY"
+
+    [[metric]]
+    context = "size_dba_segments_top100"
+    metricsdesc = {table_partition_bytes="Gauge metric with the size of the table partition in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as table_partition_bytes from dba_segments where segment_type='TABLE PARTITION' group by segment_name) order by table_partition_bytes DESC FETCH NEXT 100 ROWS ONLY"
+
+    [[metric]]
+    context = "size_dba_segments_top100"
+    metricsdesc = {cluster_bytes="Gauge metric with the size of the cluster in user segments."}
+    labels = ["segment_name"]
+    request = "select * from (select segment_name,sum(bytes) as cluster_bytes from dba_segments where segment_type='CLUSTER' group by segment_name) order by cluster_bytes DESC FETCH NEXT 100 ROWS ONLY"

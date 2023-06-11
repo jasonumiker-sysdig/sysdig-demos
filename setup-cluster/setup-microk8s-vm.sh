@@ -14,7 +14,7 @@ cd ~/.kube
 multipass transfer $VM_NAME:/home/ubuntu/.kube/config config
 
 # Deploy Sysdig Agent
-./sysdig-agent-helm-install.sh
+#./sysdig-agent-helm-install.sh
 
 # Deploy our demos
-kubectl apply -k ../demos
+#kubectl apply -k ../demos

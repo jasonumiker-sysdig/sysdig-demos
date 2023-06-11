@@ -21,3 +21,8 @@ admissionController:
   enabled: true
   scanner:
     enabled: false
+agent:
+  sysdig:
+    settings:
+      drift_killer:
+        enabled: true

@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: postgres-sakila
-        image: jasonumiker/postgres-sakila:190523
+        image: public.ecr.aws/m9h2b5e7/postgres-sakila:110623
         ports:
         - containerPort: 5432
         env:

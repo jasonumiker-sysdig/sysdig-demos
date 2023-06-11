@@ -17,7 +17,7 @@ RUN pipenv lock
 RUN pipenv requirements > requirements.txt
 RUN pip install --user -r requirements.txt
 
-COPY app.py /app
+COPY --chown=python:python app.py .
 
 EXPOSE 8080
 

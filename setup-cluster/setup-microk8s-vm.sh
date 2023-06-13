@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VM_NAME="microk8s-vm-sysdig"
+SETUP_DIR=$(pwd)
 
 # You can reset things back to defaults by deleting the VM and then let the script recreate
 multipass delete $VM_NAME
@@ -11,10 +12,11 @@ multipass launch --cpus 4 --memory 8G --disk 20G --name $VM_NAME --cloud-init cl
 
 # Copy the .kube/config to the local machine
 cd ~/.kube
-multipass transfer $VM_NAME:/home/ubuntu/.kube/config config
+multipass transfer $VM_NAME:/home/ubuntu/.kube/config .
 
 # Deploy Sysdig Agent
-#./sysdig-agent-helm-install.sh
+cd $SETUP_DIR
+./sysdig-agent-helm-install.sh
 
 # Deploy our demos
-#kubectl apply -k ../demos
+kubectl apply -k ../demos

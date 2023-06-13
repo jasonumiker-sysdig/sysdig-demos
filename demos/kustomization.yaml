@@ -6,4 +6,4 @@ resources:
   - security-playground
   - data-exfil-postgres
   - network-policy
-  - security-playground-unprivileged
+  - security-playground-restricted

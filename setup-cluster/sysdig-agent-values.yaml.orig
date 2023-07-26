@@ -26,3 +26,4 @@ agent:
     settings:
       drift_killer:
         enabled: true
+      enrich_with_process_lineage: true

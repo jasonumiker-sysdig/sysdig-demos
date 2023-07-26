@@ -19,4 +19,4 @@ cd $SETUP_DIR
 ./sysdig-agent-helm-install.sh
 
 # Deploy our demos
-#kubectl apply -k ../demos
+kubectl apply -k ../demos

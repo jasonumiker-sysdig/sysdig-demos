@@ -25,7 +25,7 @@ spec:
       hostPID: true
       containers:
         - name: security-playground
-          image: public.ecr.aws/m9h2b5e7/security-playground:110623
+          image: public.ecr.aws/m9h2b5e7/security-playground:270723
           ports:
             - name: http
               containerPort: 8080
@@ -40,6 +40,13 @@ spec:
               port: http
           securityContext:
             privileged: true
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # Regenerate Kubeconfig
 # Run as root/sudo
 

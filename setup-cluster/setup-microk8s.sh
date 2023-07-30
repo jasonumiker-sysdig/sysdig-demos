@@ -1,5 +1,8 @@
-#!/bin/bash
+#!/bin/zsh
 # NOTE: Run this with sudo
+
+# Install zsh
+apt update && apt install -y zsh
 
 # Install microk8s on it
 snap install microk8s --channel=1.27/stable --classic
@@ -36,7 +39,7 @@ snap install helm --classic
 #wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.27.1/crictl-v1.27.1-linux-$ARCH.tar.gz
 #tar zxvf crictl-v1.27.1-linux-$ARCH.tar.gz -C /usr/local/bin
 #rm -f crictl-v1.27.1-linux-$ARCH.tar.gz
-#echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
+echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
 
 # Set up the kubeconfig
 mkdir /root/.kube

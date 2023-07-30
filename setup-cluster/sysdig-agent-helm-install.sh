@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 kubectl create ns sysdig-agent
 helm repo add sysdig https://charts.sysdig.com
 helm repo update

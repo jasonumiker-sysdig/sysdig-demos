@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/zsh
 docker exec -it oracle sqlplus -s sakila/sakila@//localhost/XEPDB1 @//query.sql

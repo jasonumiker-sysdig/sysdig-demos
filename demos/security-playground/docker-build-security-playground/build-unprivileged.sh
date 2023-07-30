@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 docker buildx create --name mybuilder --bootstrap --use
 docker buildx build --push --file ./Dockerfile-unprivileged \
   --platform linux/arm64,linux/amd64 \

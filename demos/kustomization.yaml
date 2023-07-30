@@ -5,3 +5,4 @@ resources:
   - team2.yaml
   - security-playground
   - network-policy
+  - cpu-throttling

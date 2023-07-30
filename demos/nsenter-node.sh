@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 set -x
 
 nodeName=microk8s-vm-sysdig

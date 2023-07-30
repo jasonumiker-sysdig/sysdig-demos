@@ -1,5 +1,4 @@
-#!/bin/zsh
-set -x
+#!/bin/bashset -x
 
 nodeName=microk8s-vm-sysdig
 #nodeName=$(kubectl get node ${node} -o template --template='{{index .metadata.labels "kubernetes.io/hostname"}}')

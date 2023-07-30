@@ -1,2 +1,1 @@
-#!/bin/zsh
-multipass launch --name docker docker
+#!/bin/bashmultipass launch --name docker docker

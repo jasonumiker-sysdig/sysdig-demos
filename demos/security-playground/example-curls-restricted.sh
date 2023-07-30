@@ -1,5 +1,4 @@
-#!/bin/zsh
-# Script to demonstrate how to interact with security-playground
+#!/bin/bash# Script to demonstrate how to interact with security-playground
 
 NODE_IP=$(kubectl get nodes -o wide | awk 'FNR == 2 {print $6}')
 NODE_PORT=30001

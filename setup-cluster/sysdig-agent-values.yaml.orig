@@ -21,6 +21,9 @@ admissionController:
   enabled: true
   scanner:
     enabled: false
+  webhook:
+    autoscaling:
+      minReplicas: 1
 agent:
   sysdig:
     settings:

@@ -1,4 +1,4 @@
-#!/bin/bash# NOTE: Run this with sudo
+#!/usr/bin/env bash# NOTE: Run this with sudo
 
 # Install zsh
 apt update && apt install -y zsh

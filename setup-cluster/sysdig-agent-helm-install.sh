@@ -1,4 +1,4 @@
-#!/bin/bashkubectl create ns sysdig-agent
+#!/usr/bin/env bashkubectl create ns sysdig-agent
 helm repo add sysdig https://charts.sysdig.com
 helm repo update
 helm install sysdig-agent --namespace sysdig-agent -f sysdig-agent-values.yaml sysdig/sysdig-deploy --version 1.15.4

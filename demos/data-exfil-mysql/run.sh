@@ -1,1 +1,1 @@
-#!/bin/bashdocker run --name mysql -e MYSQL_ROOT_PASSWORD=sakila -d jasonumiker/mysql-sakila:latest
+#!/usr/bin/env bashdocker run --name mysql -e MYSQL_ROOT_PASSWORD=sakila -d jasonumiker/mysql-sakila:latest

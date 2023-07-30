@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 VM_NAME="microk8s-vm-sysdig"
 SETUP_DIR=$(pwd)
 

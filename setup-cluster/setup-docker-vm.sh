@@ -1,1 +1,2 @@
-#!/usr/bin/env bashmultipass launch --name docker docker
+#!/usr/bin/env bash
+multipass launch --name docker docker

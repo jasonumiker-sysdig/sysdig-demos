@@ -1,4 +1,5 @@
-#!/usr/bin/env bash# Regenerate Kubeconfig
+#!/usr/bin/env bash
+# Regenerate Kubeconfig
 # Run as root/sudo
 
 microk8s config > /root/.kube/config

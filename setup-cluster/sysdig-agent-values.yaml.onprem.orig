@@ -9,13 +9,14 @@ global:
 nodeAnalyzer:
   secure:
     vulnerabilityManagement:
-      newEngineOnly: true
+      newEngineOnly: false
   nodeAnalyzer:
     benchmarkRunner:
       deploy: false
     runtimeScanner:
       settings:
         eveEnabled: true
+      deploy: true
     apiEndpoint: sysdig.jasonumiker.com
     sslVerifyCertificate: false
 admissionController:
@@ -28,8 +29,6 @@ admissionController:
 agent:
   sysdig:
     settings:
-      drift_killer:
-        enabled: true
       enrich_with_process_lineage: true
   collectorSettings:
     collectorHost: sysdig.jasonumiker.com

@@ -10,13 +10,14 @@ global:
 nodeAnalyzer:
   secure:
     vulnerabilityManagement:
-      newEngineOnly: true
+      newEngineOnly: false
   nodeAnalyzer:
     benchmarkRunner:
       deploy: false
     runtimeScanner:
       settings:
         eveEnabled: true
+      deploy: true
 admissionController:
   enabled: true
   scanner:
@@ -27,6 +28,4 @@ admissionController:
 agent:
   sysdig:
     settings:
-      drift_killer:
-        enabled: true
       enrich_with_process_lineage: true

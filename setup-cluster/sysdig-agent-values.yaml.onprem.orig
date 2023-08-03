@@ -1,0 +1,36 @@
+global:
+  sysdig:
+    accessKey: xxx
+    secureAPIToken: xxx
+  kspm:
+    deploy: false
+  clusterConfig:
+    name: microk8s-cluster
+nodeAnalyzer:
+  secure:
+    vulnerabilityManagement:
+      newEngineOnly: true
+  nodeAnalyzer:
+    benchmarkRunner:
+      deploy: false
+    runtimeScanner:
+      settings:
+        eveEnabled: true
+    apiEndpoint: sysdig.jasonumiker.com
+    sslVerifyCertificate: false
+admissionController:
+  enabled: true
+  scanner:
+    enabled: false
+  sysdig:
+    apiEndpoint: sysdig.jasonumiker.com
+  verifySSL: false
+agent:
+  sysdig:
+    settings:
+      drift_killer:
+        enabled: true
+      enrich_with_process_lineage: true
+  collectorSettings:
+    collectorHost: sysdig.jasonumiker.com
+    sslVerifyCertificate: false

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # NOTE: Run this with sudo
 
-# Install zsh
-apt update && apt install -y zsh
-
 # Install microk8s on it
 snap install microk8s --channel=1.27/stable --classic
 

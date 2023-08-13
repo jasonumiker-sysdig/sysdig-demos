@@ -12,7 +12,7 @@ multipass launch --cpus 6 --memory 8G --disk 20G --name $VM_NAME --cloud-init cl
 
 # Copy the .kube/config to the local machine
 cd ~
-multipass transfer microk8s-vm-sysdig:/home/ubuntu/.kube/config config
+multipass transfer $VM_NAME:/home/ubuntu/.kube/config config
 mv config .kube
 
 # Deploy Sysdig Agent

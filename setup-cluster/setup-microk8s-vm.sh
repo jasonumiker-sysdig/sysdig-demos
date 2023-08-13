@@ -11,8 +11,9 @@ multipass purge
 multipass launch --cpus 6 --memory 8G --disk 20G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
 
 # Copy the .kube/config to the local machine
-cd ~/.kube
-multipass transfer $VM_NAME:/home/ubuntu/.kube/config .
+cd ~
+multipass transfer microk8s-vm-sysdig:/home/ubuntu/.kube/config config
+mv config .kube
 
 # Deploy Sysdig Agent
 cd $SETUP_DIR

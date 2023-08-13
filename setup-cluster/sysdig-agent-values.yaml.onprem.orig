@@ -30,6 +30,8 @@ agent:
   sysdig:
     settings:
       enrich_with_process_lineage: true
+      drift_control:
+        enabled: true
   collectorSettings:
     collectorHost: sysdig.jasonumiker.com
     sslVerifyCertificate: false

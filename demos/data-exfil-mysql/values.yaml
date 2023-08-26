@@ -1,8 +1,0 @@
-exporterNamespaceName: mysql-sakila
-namespace: mysql-sakila
-namespaceName: mysql-sakila
-secretName: mysql-exporter
-sslmode: false
-ubi: false
-workloadName: mysql-sakila-deployment
-workloadType: deployment

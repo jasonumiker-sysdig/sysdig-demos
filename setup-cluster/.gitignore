@@ -1,4 +1,5 @@
 sysdig-agent-values.yaml
 sysdig-agent-values.yaml.onprem
 sysdig-agent-values.yaml.saas
+sysdig-agent-values.yaml.clusterscanner
 kubeconfig

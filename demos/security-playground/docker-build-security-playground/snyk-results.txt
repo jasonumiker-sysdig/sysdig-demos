@@ -1,0 +1,40 @@
+
+Testing ./app.py ...
+
+ ✗ [High] Cross-site Scripting (XSS) 
+   Path: app.py, line 12 
+   Info: Unsanitized input from an HTTP parameter flows into the return value of read, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+
+ ✗ [High] Cross-site Scripting (XSS) 
+   Path: app.py, line 20 
+   Info: Unsanitized input from an HTTP parameter flows into the return value of write, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+
+ ✗ [High] Cross-site Scripting (XSS) 
+   Path: app.py, line 27 
+   Info: Unsanitized input from an HTTP parameter flows into the return value of exec, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+
+ ✗ [High] Command Injection 
+   Path: app.py, line 26 
+   Info: Unsanitized input from an HTTP parameter flows into subprocess.run, where it is used as a shell command. This may result in a Command Injection vulnerability.
+
+ ✗ [High] Path Traversal 
+   Path: app.py, line 11 
+   Info: Unsanitized input from an HTTP parameter flows into open, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.
+
+ ✗ [High] Path Traversal 
+   Path: app.py, line 18 
+   Info: Unsanitized input from an HTTP parameter flows into open, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write arbitrary files.
+
+
+✔ Test completed
+
+Organization:      jason.umiker-tk2
+Test type:         Static code analysis
+Project path:      ./app.py
+
+Summary:
+
+  6 Code issues found
+  6 [High] 
+
+

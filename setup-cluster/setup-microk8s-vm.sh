@@ -7,8 +7,8 @@ multipass delete $VM_NAME
 multipass purge
 
 # Provision your local cluster VM
-#multipass launch --cpus 6 --memory 8G --disk 20G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 --bridged 22.04
-multipass launch --cpus 6 --memory 8G --disk 20G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
+#multipass launch --cpus 10 --memory 12G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 --bridged 22.04
+multipass launch --cpus 10 --memory 12G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
 
 # Copy the .kube/config to the local machine
 cd ~

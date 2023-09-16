@@ -22,7 +22,10 @@ microk8s start
 microk8s status --wait-ready
 
 # Enable CoreDNS, RBAC, hostpath-storage
-microk8s enable dns rbac hostpath-storage
+microk8s enable dns 
+microk8s enable rbac 
+micork8s enable hostpath-storage
+microk8s enable observability
 microk8s status --wait-ready
 
 # Install kubectl in VM

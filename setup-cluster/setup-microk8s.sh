@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # NOTE: Run this with sudo
 
+# Install conntrack
+apt update && apt install conntrack -y
+
 # Install microk8s on it
-snap install microk8s --channel=1.28/stable --classic
+snap install microk8s --channel=1.27/stable --classic
 
 # Move containerd to standard /run and /var/lib runtime paths
 # Periodically I try to reconfigure the Sysdig Agent for the non-standand

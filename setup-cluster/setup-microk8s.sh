@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # NOTE: Run this with sudo
 
+# Install conntrack
+apt update && apt install conntrack -y
+
 # Install microk8s on it
 snap install microk8s --channel=1.27/stable --classic
 
@@ -24,21 +27,21 @@ microk8s status --wait-ready
 # Enable CoreDNS, RBAC, hostpath-storage
 microk8s enable dns 
 microk8s enable rbac 
-micork8s enable hostpath-storage
+microk8s enable hostpath-storage
 microk8s enable observability
 microk8s status --wait-ready
 
 # Install kubectl in VM
-snap install kubectl --channel 1.27/stable --classic
+snap install kubectl --channel 1.28/stable --classic
 
 # Install helm in VM
 snap install helm --classic
 
 # Install crictl in VM
 #ARCH=$(dpkg --print-architecture)
-#wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.27.1/crictl-v1.27.1-linux-$ARCH.tar.gz
-#tar zxvf crictl-v1.27.1-linux-$ARCH.tar.gz -C /usr/local/bin
-#rm -f crictl-v1.27.1-linux-$ARCH.tar.gz
+#wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.28.0/crictl-v1.28.0-linux-$ARCH.tar.gz
+#tar zxvf crictl-v1.28.0-linux-$ARCH.tar.gz -C /usr/local/bin
+#rm -f crictl-v1.28.0-linux-$ARCH.tar.gz
 echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
 
 # Set up the kubeconfig

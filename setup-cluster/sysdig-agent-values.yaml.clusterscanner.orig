@@ -1,12 +1,12 @@
 global:
   sysdig: 
-    accessKey: XXX
+    accessKey: xxx
     region: au1
-    secureAPIToken: YYY
+    secureAPIToken: xxx
   kspm:
     deploy: true
   clusterConfig:
-    name: ZZZ
+    name: microk8s-cluster-mac
 nodeAnalyzer:
   secure:
     vulnerabilityManagement:
@@ -15,8 +15,7 @@ nodeAnalyzer:
     benchmarkRunner:
       deploy: false
     runtimeScanner:
-      settings:
-        eveEnabled: true
+      deploy: false
 admissionController:
   enabled: true
   scanner:
@@ -24,3 +23,8 @@ admissionController:
   webhook:
     autoscaling:
       minReplicas: 1
+clusterScanner:
+  enabled: true
+  eveEnabled: true
+  scannerMode: "local"
+  replicaCount: 1

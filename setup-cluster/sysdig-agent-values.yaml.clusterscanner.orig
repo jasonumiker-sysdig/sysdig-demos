@@ -6,7 +6,7 @@ global:
   kspm:
     deploy: true
   clusterConfig:
-    name: microk8s-cluster-mac
+    name: microk8s-cluster
 nodeAnalyzer:
   secure:
     vulnerabilityManagement:

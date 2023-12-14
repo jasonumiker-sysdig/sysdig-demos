@@ -5,7 +5,7 @@
 apt update && apt install conntrack -y
 
 # Install microk8s on it
-snap install microk8s --channel=1.29/stable --classic
+snap install microk8s --channel=1.27/stable --classic
 
 # Move containerd to standard /run and /var/lib runtime paths
 # Periodically I try to reconfigure the Sysdig Agent for the non-standand
@@ -32,7 +32,7 @@ microk8s enable observability
 microk8s status --wait-ready
 
 # Install kubectl in VM
-snap install kubectl --channel 1.29/stable --classic
+snap install kubectl --channel 1.27/stable --classic
 
 # Install helm in VM
 snap install helm --classic

@@ -16,6 +16,8 @@ nodeAnalyzer:
       deploy: false
     runtimeScanner:
       deploy: false
+    hostScanner:
+      scanOnStart: true
 admissionController:
   enabled: true
   scanner:

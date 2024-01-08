@@ -17,6 +17,8 @@ nodeAnalyzer:
     runtimeScanner:
       settings:
         eveEnabled: true
+    hostScanner:
+      scanOnStart: true
 admissionController:
   enabled: true
   scanner:

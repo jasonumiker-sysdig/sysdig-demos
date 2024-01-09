@@ -24,7 +24,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: alpine:3.18.2
+      - image: alpine:3.19.0
         name: hello-client
         command: ["sh", "-c"]
         args: ["while true; do wget -qO- --timeout=2 http://hello-server.team1.svc:8080; sleep 30; done"]
@@ -62,7 +62,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: alpine:3.18.2
+      - image: alpine:3.19.0
         name: hello-client-blocked
         command: ["sh", "-c"]
         args: ["while true; do wget -qO- --timeout=2 http://hello-server.team1.svc:8080; sleep 30; done"]

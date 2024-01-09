@@ -4,4 +4,5 @@ resources:
   - security-playground.yaml
   - security-playground-restricted.yaml
   - security-playground-restricted-nodrift.yaml
+  - security-playground-restricted-nomalware.yaml
   - postgres-sakila.yaml

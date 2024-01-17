@@ -6,7 +6,7 @@ global:
   kspm:
     deploy: true
   clusterConfig:
-    name: microk8s-cluster
+    name: xxx
 nodeAnalyzer:
   secure:
     vulnerabilityManagement:
@@ -28,5 +28,6 @@ admissionController:
 clusterScanner:
   enabled: true
   eveEnabled: true
+  eveIntegrationEnabled: true
   scannerMode: "local"
   replicaCount: 1

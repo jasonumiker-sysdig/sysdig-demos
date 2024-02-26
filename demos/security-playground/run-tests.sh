@@ -7,5 +7,6 @@ set +e
 ./example-curls-nomalware.sh
 kubectl delete pods --all -n security-playground
 kubectl delete pods --all -n security-playground-restricted
-kubectl delete pods --all -n security-playground-nodrift
+kubectl delete pods --all -n security-playground-restricted-nodrift
+kubectl delete pods --all -n security-playground-restricted-nomalware
 kubectl delete deployment nefarious-workload -n security-playground

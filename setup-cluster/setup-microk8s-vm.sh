@@ -7,8 +7,8 @@ multipass delete $VM_NAME
 multipass purge
 
 # Provision your local cluster VM
-#multipass launch --cpus 8 --memory 16G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 --bridged 22.04
-multipass launch --cpus 8 --memory 16G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
+multipass launch --cpus 8 --memory 16G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 --bridged 22.04
+#multipass launch --cpus 8 --memory 16G --disk 30G --name $VM_NAME --cloud-init cloud-init.yaml --timeout 600 22.04
 
 # Copy the .kube/config to the local machine
 cd ~
@@ -21,3 +21,4 @@ cd $SETUP_DIR
 
 # Deploy our demos
 kubectl apply -k ../demos
+kubectl apply -k ../example-scenarios/k8s-manifests

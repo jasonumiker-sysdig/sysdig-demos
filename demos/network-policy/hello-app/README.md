@@ -1,1 +1,0 @@
-Cloned from https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/main/hello-app

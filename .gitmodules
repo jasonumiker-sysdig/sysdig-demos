@@ -1,0 +1,3 @@
+[submodule "example-scenarios"]
+	path = example-scenarios
+	url = https://github.com/jasonumiker-sysdig/example-scenarios

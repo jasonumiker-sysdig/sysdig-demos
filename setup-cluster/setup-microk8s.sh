@@ -74,7 +74,7 @@ microk8s.config | cat - > /root/.kube/config
 #cat known_tokens.csv >> /var/snap/microk8s/current/credentials/known_tokens.csv
 #microk8s stop
 #microk8s start
-#mkdir /home/ubuntu/.kube/
+mkdir /home/ubuntu/.kube/
 cp /root/.kube/config /home/ubuntu/.kube/config
 chown ubuntu:ubuntu -R /home/ubuntu/.kube
 

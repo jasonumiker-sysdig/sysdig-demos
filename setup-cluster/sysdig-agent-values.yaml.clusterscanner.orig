@@ -28,6 +28,14 @@ admissionController:
 clusterScanner:
   enabled: true
   eveEnabled: true
-  eveIntegrationEnabled: true
   scannerMode: "local"
   replicaCount: 1
+agent:
+  extraVolumes:
+    volumes:
+      - name: socket
+        hostPath:
+          path: /var/snap/microk8s/common/run
+    mounts:
+      - name: socket
+        mountPath: /host/run/containerd

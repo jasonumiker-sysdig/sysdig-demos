@@ -11,18 +11,18 @@ snap install microk8s --channel=1.29/stable --classic
 # Periodically I try to reconfigure the Sysdig Agent for the non-standand
 # paths from micro8s (being a Snap) and I have yet to be able to get it to
 # work - so I instead reconfigure microk8s to use the standard paths instead
-#microk8s stop
-#cp /var/snap/microk8s/current/args/containerd /var/snap/microk8s/current/args/containerd-orig
-#sed -i 's|--state ${SNAP_COMMON}/run/containerd|--state /var/run/containerd|g' /var/snap/microk8s/current/args/containerd
-#sed -i 's|--address ${SNAP_COMMON}/run/containerd.sock|--address /var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/containerd
-#sed -i 's|--root ${SNAP_COMMON}/var/lib/containerd|--root /var/lib/containerd|g' /var/snap/microk8s/current/args/containerd
-#cp /var/snap/microk8s/current/args/ctr /var/snap/microk8s/current/args/ctr-orig
-#sed -i 's|--address=${SNAP_COMMON}/run/containerd.sock|--address /var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/ctr
-#cp /var/snap/microk8s/current/args/kubelet /var/snap/microk8s/current/args/kubelet-orig
-#sed -i 's|--container-runtime-endpoint=${SNAP_COMMON}/run/containerd.sock|--container-runtime-endpoint=/var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/kubelet
-#sed -i 's|--containerd=${SNAP_COMMON}/run/containerd.sock|--containerd=/var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/kubelet
-#microk8s start
-#microk8s status --wait-ready
+microk8s stop
+cp /var/snap/microk8s/current/args/containerd /var/snap/microk8s/current/args/containerd-orig
+sed -i 's|--state ${SNAP_COMMON}/run/containerd|--state /var/run/containerd|g' /var/snap/microk8s/current/args/containerd
+sed -i 's|--address ${SNAP_COMMON}/run/containerd.sock|--address /var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/containerd
+sed -i 's|--root ${SNAP_COMMON}/var/lib/containerd|--root /var/lib/containerd|g' /var/snap/microk8s/current/args/containerd
+cp /var/snap/microk8s/current/args/ctr /var/snap/microk8s/current/args/ctr-orig
+sed -i 's|--address=${SNAP_COMMON}/run/containerd.sock|--address /var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/ctr
+cp /var/snap/microk8s/current/args/kubelet /var/snap/microk8s/current/args/kubelet-orig
+sed -i 's|--container-runtime-endpoint=${SNAP_COMMON}/run/containerd.sock|--container-runtime-endpoint=/var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/kubelet
+sed -i 's|--containerd=${SNAP_COMMON}/run/containerd.sock|--containerd=/var/run/containerd/containerd.sock|g' /var/snap/microk8s/current/args/kubelet
+microk8s start
+microk8s status --wait-ready
 
 # Enable CoreDNS, RBAC, hostpath-storage
 microk8s enable dns 
@@ -42,8 +42,8 @@ snap install helm --classic
 #wget -q https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.28.0/crictl-v1.28.0-linux-$ARCH.tar.gz
 #tar zxvf crictl-v1.28.0-linux-$ARCH.tar.gz -C /usr/local/bin
 #rm -f crictl-v1.28.0-linux-$ARCH.tar.gz
-#echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
-echo "runtime-endpoint: unix:///var/snap/microk8s/common/run/containerd.sock" > /etc/crictl.yaml
+echo "runtime-endpoint: unix:///var/run/containerd/containerd.sock" > /etc/crictl.yaml
+#echo "runtime-endpoint: unix:///var/snap/microk8s/common/run/containerd.sock" > /etc/crictl.yaml
 
 # Set up the kubeconfig
 mkdir /root/.kube

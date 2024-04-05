@@ -1,5 +1,6 @@
 sysdig-cli-scanner
 scan.sh
+scan-iac.sh
 main.db
 scan-logs
 main.db.meta.json

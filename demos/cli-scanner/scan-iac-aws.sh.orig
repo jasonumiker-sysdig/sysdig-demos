@@ -1,0 +1,1 @@
+SECURE_API_TOKEN=xxx ./sysdig-cli-scanner --apiurl https://app.au1.sysdig.com --iac ../../example-scenarios/aws-s3-terraform/main.tf

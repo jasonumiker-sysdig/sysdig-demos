@@ -1,0 +1,39 @@
+global:
+  clusterConfig:
+    name: XXX
+  sysdig:
+    region: au1
+    accessKey: YYY
+    secureAPIToken: ZZZ
+  kspm:
+    deploy: true
+nodeAnalyzer:
+  nodeAnalyzer:
+    benchmarkRunner:
+      deploy: false
+    runtimeScanner:
+      deploy: false
+    imageAnalyzer:
+      deploy: false
+    hostScanner:
+      scanOnStart: true
+kspmCollector:
+  enabled: false
+admissionController:
+  enabled: false
+clusterScanner:
+  enabled: false
+clusterShield:
+  enabled: true
+  replicaCount: 1
+  cluster_shield:
+    log_level: info
+    features:
+      admission_control:
+        enabled: true
+      audit:
+        enabled: true
+      container_vulnerability_management:
+        enabled: true
+      posture:
+        enabled: true
